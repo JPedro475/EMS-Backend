@@ -54,4 +54,13 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
         return FuncionarioMapper.mapToFuncionarioDto(updatedFuncionarioObj);
     }
+
+    @Override
+    public void deleteFuncionario(Long funcionarioId) {
+        Funcionario funcionario = funcionarioRepository.findById(funcionarioId).orElseThrow(
+                () -> new NotFoundException("Funcionário não existe:" + funcionarioId)
+        );
+
+        funcionarioRepository.deleteById(funcionarioId);
+    }
 }
