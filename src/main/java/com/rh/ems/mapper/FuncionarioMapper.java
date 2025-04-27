@@ -16,7 +16,7 @@ public class FuncionarioMapper {
         return new Funcionario(
                 funcionarioDto.getId(),
                 funcionarioDto.getPrimeiroNome(),
-                funcionarioDto.getUltimonome(),
+                funcionarioDto.getUltimoNome(),
                 funcionarioDto.getEmail()
         );
     }
