@@ -9,6 +9,9 @@ import com.rh.ems.service.FuncionarioService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class FuncionarioServiceImpl implements FuncionarioService {
@@ -28,5 +31,12 @@ public class FuncionarioServiceImpl implements FuncionarioService {
                 .orElseThrow(()
                         -> new NotFoundException("Funcionário não foi encontrado com este Id : " + funcionarioId));
         return FuncionarioMapper.mapToFuncionarioDto(funcionario);
+    }
+
+    @Override
+    public List<FuncionarioDto> getAllFuncionarios() {
+        List<Funcionario> funcionarios = funcionarioRepository.findAll();
+        return funcionarios.stream().map((funcionario) -> FuncionarioMapper.mapToFuncionarioDto(funcionario))
+                .collect(Collectors.toList());
     }
 }
