@@ -6,10 +6,7 @@ import com.rh.ems.service.FuncionarioService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
@@ -18,10 +15,17 @@ public class FuncionarioController {
 
     private FuncionarioService funcionarioService;
 
-    //Funcionario REST API
+    // Add Funcionario REST API
     @PostMapping
     public ResponseEntity<FuncionarioDto> createFuncionario(@RequestBody FuncionarioDto funcionarioDto){
         FuncionarioDto savedFuncionario = funcionarioService.createFuncionario(funcionarioDto);
         return new ResponseEntity<>(savedFuncionario, HttpStatus.CREATED);
+    }
+
+    // Get Funcionario REST API
+    @GetMapping("{id}")
+    public ResponseEntity<FuncionarioDto> getFuncionarioById(@PathVariable("id") Long funcionarioId){
+       FuncionarioDto funcionarioDto = funcionarioService.getFuncionarioById(funcionarioId);
+       return ResponseEntity.ok(funcionarioDto);
     }
 }
