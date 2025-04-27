@@ -36,4 +36,12 @@ public class FuncionarioController {
        List<FuncionarioDto> funcionarios =  funcionarioService.getAllFuncionarios();
        return ResponseEntity.ok(funcionarios);
     }
+
+    // Update Funcionarios REST API
+    @PutMapping("{id}")
+    public ResponseEntity<FuncionarioDto> updateFuncionario(@PathVariable("id") Long funcionarioId,
+                                                            @RequestBody FuncionarioDto updatedFuncionario){
+        FuncionarioDto funcionarioDto = funcionarioService.updateFuncionario(funcionarioId, updatedFuncionario);
+        return ResponseEntity.ok(funcionarioDto);
+    }
 }
