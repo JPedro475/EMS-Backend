@@ -12,6 +12,6 @@ import lombok.Setter;
 public class FuncionarioDto {
     private Long id;
     private String primeiroNome;
-    private String ultimonome;
+    private String ultimoNome;
     private String email;
 }
