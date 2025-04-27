@@ -4,4 +4,6 @@ import com.rh.ems.dto.FuncionarioDto;
 
 public interface FuncionarioService {
     FuncionarioDto createFuncionario(FuncionarioDto funcionarioDto);
+
+    FuncionarioDto getFuncionarioById(Long funcionarioId);
 }
