@@ -44,4 +44,11 @@ public class FuncionarioController {
         FuncionarioDto funcionarioDto = funcionarioService.updateFuncionario(funcionarioId, updatedFuncionario);
         return ResponseEntity.ok(funcionarioDto);
     }
+
+    // Delete Funcionarios REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteFuncionario(@PathVariable("id") Long funcionarioId){
+        funcionarioService.deleteFuncionario(funcionarioId);
+        return ResponseEntity.ok("Funcionário deletado com sucesso!");
+    }
 }
