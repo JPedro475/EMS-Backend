@@ -12,4 +12,6 @@ public interface FuncionarioService {
     List<FuncionarioDto> getAllFuncionarios();
 
     FuncionarioDto updateFuncionario(Long funcionarioId, FuncionarioDto updatedFuncionario);
+
+    void deleteFuncionario(Long funcionarioId);
 }
