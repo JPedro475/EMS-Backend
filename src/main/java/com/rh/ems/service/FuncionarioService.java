@@ -10,4 +10,6 @@ public interface FuncionarioService {
     FuncionarioDto getFuncionarioById(Long funcionarioId);
 
     List<FuncionarioDto> getAllFuncionarios();
+
+    FuncionarioDto updateFuncionario(Long funcionarioId, FuncionarioDto updatedFuncionario);
 }
