@@ -1,0 +1,23 @@
+package com.rh.ems.service.impl;
+
+import com.rh.ems.dto.FuncionarioDto;
+import com.rh.ems.entity.Funcionario;
+import com.rh.ems.mapper.FuncionarioMapper;
+import com.rh.ems.repository.FuncionarioRepository;
+import com.rh.ems.service.FuncionarioService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@AllArgsConstructor
+public class FuncionarioServiceImpl implements FuncionarioService {
+
+    private FuncionarioRepository funcionarioRepository;
+
+    @Override
+    public FuncionarioDto createFuncionario(FuncionarioDto funcionarioDto) {
+        Funcionario funcionario = FuncionarioMapper.mapToFuncionario(funcionarioDto);
+        Funcionario savedFuncionario = funcionarioRepository.save(funcionario);
+        return FuncionarioMapper.mapToFuncionarioDto(savedFuncionario);
+    }
+}
