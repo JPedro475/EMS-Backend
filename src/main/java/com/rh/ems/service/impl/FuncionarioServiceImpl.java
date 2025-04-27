@@ -39,4 +39,19 @@ public class FuncionarioServiceImpl implements FuncionarioService {
         return funcionarios.stream().map((funcionario) -> FuncionarioMapper.mapToFuncionarioDto(funcionario))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public FuncionarioDto updateFuncionario(Long funcionarioId, FuncionarioDto updatedFuncionario) {
+
+      Funcionario funcionario = funcionarioRepository.findById(funcionarioId).orElseThrow(
+                () -> new NotFoundException("Funcionário não existe:" + funcionarioId)
+        );
+      funcionario.setPrimeiroNome(updatedFuncionario.getPrimeiroNome());
+      funcionario.setUltimoNome(updatedFuncionario.getUltimoNome());
+      funcionario.setEmail(updatedFuncionario.getEmail());
+
+      Funcionario updatedFuncionarioObj = funcionarioRepository.save(funcionario);
+
+        return FuncionarioMapper.mapToFuncionarioDto(updatedFuncionarioObj);
+    }
 }
