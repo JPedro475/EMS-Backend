@@ -5,13 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
 
+
+@Audited
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "funcionario")
+@Table(name = "funcionario", schema = "empregados")
+@AuditTable(value = "funcionario_audit", schema = "empregados_auditoria")
 public class Funcionario {
 
     @Id
