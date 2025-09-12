@@ -6,6 +6,7 @@ import com.rh.ems.exception.NotFoundException;
 import com.rh.ems.mapper.FuncionarioMapper;
 import com.rh.ems.repository.FuncionarioRepository;
 import com.rh.ems.service.FuncionarioService;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 @AllArgsConstructor
 public class FuncionarioServiceImpl implements FuncionarioService {
 
