@@ -1,12 +1,11 @@
 package com.rh.ems.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.envers.AuditTable;
 import org.hibernate.envers.Audited;
+
+import java.io.Serializable;
 
 
 @Audited
@@ -17,10 +16,12 @@ import org.hibernate.envers.Audited;
 @Entity
 @Table(name = "funcionario", schema = "empregados")
 @AuditTable(value = "funcionario_audit", schema = "empregados_auditoria")
-public class Funcionario {
+@Data
+public class Funcionario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
     @Column(name = "primeiro_nome")
