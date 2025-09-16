@@ -14,4 +14,22 @@ public class FuncionarioDto {
     private String primeiroNome;
     private String ultimoNome;
     private String email;
+    private Long cargoId;
+    private String cargoNome;
+
+    public Long getCargoId() {
+        return cargoId;
+    }
+
+    public void setCargoId(Long cargoId) {
+        this.cargoId = cargoId;
+    }
+
+    public String getCargoNome() {
+        return cargoNome;
+    }
+
+    public void setCargoNome(String cargoNome) {
+        this.cargoNome = cargoNome;
+    }
 }
