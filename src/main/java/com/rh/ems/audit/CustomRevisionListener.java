@@ -9,13 +9,16 @@ public class CustomRevisionListener implements RevisionListener {
 
     @Override
     public void newRevision(Object revisionEntity) {
-        EntidadeAuditoria entidadeAuditoria = (EntidadeAuditoria) revisionEntity;
+        EntidadeAuditoria auditoria = (EntidadeAuditoria) revisionEntity;
 
         HttpServletRequest request = getCurrentRequest();
 
         String ipAddress = "desconhecido";
+        String httpMethod = "N/A";
 
         if (request != null) {
+            httpMethod = request.getMethod();
+
             String forwardedFor = request.getHeader("X-Forwarded-For");
             if (forwardedFor != null && !forwardedFor.isEmpty()) {
                 ipAddress = forwardedFor.split(",")[0].trim();
@@ -24,7 +27,11 @@ public class CustomRevisionListener implements RevisionListener {
             }
         }
 
-       entidadeAuditoria.setUserIp(ipAddress);
+        auditoria.setIp(ipAddress);
+        auditoria.setMethod(httpMethod);
+
+        auditoria.setUsername("system");
+        auditoria.setRoles("N/A");
     }
 
     private HttpServletRequest getCurrentRequest() {
