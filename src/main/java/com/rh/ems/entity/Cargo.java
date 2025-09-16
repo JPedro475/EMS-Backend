@@ -7,7 +7,7 @@ import org.hibernate.envers.Audited;
 
 @Entity
 @Table(name = "cargos", schema = "cargo")
-@AuditTable(value = "cargos_audit", schema = "cargo_auditoria")
+@AuditTable(value = "cargos_audit", schema = "auditoria")
 @Audited
 @Data
 public class Cargo {

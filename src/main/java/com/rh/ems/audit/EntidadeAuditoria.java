@@ -6,7 +6,7 @@ import org.hibernate.envers.RevisionEntity;
 
 @Entity
 @RevisionEntity(CustomRevisionListener.class)
-@Table(name = "entidade_audit", schema = "empregados_auditoria")
+@Table(name = "entidade_audit", schema = "auditoria")
 public class EntidadeAuditoria extends DefaultRevisionEntity {
 
     @Id

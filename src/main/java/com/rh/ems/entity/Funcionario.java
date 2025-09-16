@@ -15,7 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Entity
 @Table(name = "funcionario", schema = "empregados")
-@AuditTable(value = "funcionario_audit", schema = "empregados_auditoria")
+@AuditTable(value = "funcionario_audit", schema = "auditoria")
 @Data
 public class Funcionario implements Serializable {
 
